@@ -11,8 +11,8 @@ The attack itself is found in the `Main.main()` method.
 
 # How the attack works
 Most of the attack is covered in the above videos. The general steps for the attack are as follows:
-1. Bank A authenticates a message using a secret key. This involves coputing a hash of the key and the transction message, h(k|m). As part of this process, the SHA-256 hash will add padding to this message.
-2. We create an array of bytes representing what this old padding would have been.
+1. Bank A authenticates a message using a secret key. This involves computing a hash of the key and the transction message, h(k|m). As part of this process, the SHA-256 hash will add padding to this message.
+2. We create an array of bytes representing what this old padding would have been, which we will call po.
 3. We create a new transaction amount to add on the end of our transaction message, which we call x. This hopes that the parser reads the new amount and ignores the old one.
 4. We create a new extended transaction of the original m, the old padding op, and the new attack payload x.
 5. We extend the original hash h(k|m) to be h(k|m|op|x), to match the new transaction.
